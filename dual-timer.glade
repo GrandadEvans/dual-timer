@@ -28,7 +28,7 @@ Author: John Evans <john@grandadevans.com>
   <!-- interface-description This small program alllows you to track time spent on a clien't project/task differently from the billable time -->
   <!-- interface-copyright John Evans 2015 -->
   <!-- interface-authors John Evans <john@grandadevans.com> -->
-  <object class="GtkAboutDialog" id="aboutdialog1">
+  <object class="GtkAboutDialog" id="about-window">
     <property name="name">Dual Timer</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">About Dual Timer</property>
@@ -83,7 +83,7 @@ Author: John Evans <john@grandadevans.com>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="menubar1">
+          <object class="GtkMenuBar" id="menubar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -97,7 +97,7 @@ Author: John Evans <john@grandadevans.com>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem1">
+                      <object class="GtkImageMenuItem" id="menu_file_new">
                         <property name="label">gtk-new</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -106,7 +106,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem2">
+                      <object class="GtkImageMenuItem" id="menu_file_open">
                         <property name="label">gtk-open</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -115,7 +115,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem3">
+                      <object class="GtkImageMenuItem" id="menu_file_save">
                         <property name="label">gtk-save</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -124,7 +124,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem4">
+                      <object class="GtkImageMenuItem" id="menu_file_save_as">
                         <property name="label">gtk-save-as</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -139,12 +139,13 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem5">
+                      <object class="GtkImageMenuItem" id="menu_file_quit">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_window_destroy" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -162,7 +163,7 @@ Author: John Evans <john@grandadevans.com>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem6">
+                      <object class="GtkImageMenuItem" id="menu_edit_cut">
                         <property name="label">gtk-cut</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -171,7 +172,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem7">
+                      <object class="GtkImageMenuItem" id="menu_edit_copy">
                         <property name="label">gtk-copy</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -180,7 +181,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem8">
+                      <object class="GtkImageMenuItem" id="menu_edit_paste">
                         <property name="label">gtk-paste</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -189,7 +190,7 @@ Author: John Evans <john@grandadevans.com>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem9">
+                      <object class="GtkImageMenuItem" id="menu_edit_delete">
                         <property name="label">gtk-delete</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -220,12 +221,13 @@ Author: John Evans <john@grandadevans.com>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem10">
+                      <object class="GtkImageMenuItem" id="menu_help_about">
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_gtk_about_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>

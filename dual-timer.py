@@ -31,11 +31,17 @@ class TutorialTextEditor:
         builder.add_from_file("dual-timer.glade")
 
         self.window = builder.get_object("dual-timer-main-window")
+        self.about_dialog = builder.get_object("about-window")
 
         builder.connect_signals(self)
 
         self.client = Timer("client", builder)
         self.billable = Timer("billable", builder)
+
+    def on_gtk_about_activate(self, menuitem, data=None):
+        print("help about selected")
+        self.response = self.about_dialog.run()
+        self.about_dialog.hide()
 
 if __name__ == "__main__":
     editor = TutorialTextEditor()
