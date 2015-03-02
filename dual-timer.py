@@ -18,17 +18,13 @@ class TutorialTextEditor:
         self.client.stop_timer()
 
     def button_timer_billable_start(self, widget, data=None):
-        self.set_last_actioned_timer = "billable"
-        print("Billable timer start")
-    def button_timer_billable_pause(self, widget, data=None):
-        self.set_last_actioned_timer = "billable"
-        print("Billable timer paused")
-    def button_timer_billable_stop(self, widget, data=None):
-        self.set_last_actioned_timer = "billable"
-        print("Billable timer stopped")
+        self.billable.start_timer()
 
-    def update_client_status_text(self):
-        self.clienttimerstatus.set_text(self.clientstatus)
+    def button_timer_billable_pause(self, widget, data=None):
+        self.billable.pause_timer()
+
+    def button_timer_billable_stop(self, widget, data=None):
+        self.billable.stop_timer()
 
     def __init__(self):
         builder = Gtk.Builder()
@@ -39,6 +35,7 @@ class TutorialTextEditor:
         builder.connect_signals(self)
 
         self.client = Timer("client", builder)
+        self.billable = Timer("billable", builder)
 
 if __name__ == "__main__":
     editor = TutorialTextEditor()

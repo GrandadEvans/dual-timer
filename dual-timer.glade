@@ -507,7 +507,7 @@ Author: John Evans <john@grandadevans.com>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="billable-timer">
+                      <object class="GtkLabel" id="billable-timer-status">
                         <property name="name">client-timer</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
@@ -554,7 +554,7 @@ Author: John Evans <john@grandadevans.com>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="billable-timer-status">
+                  <object class="GtkLabel" id="billable-timer-label">
                     <property name="name">billable-timer-status</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
