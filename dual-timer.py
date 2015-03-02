@@ -86,7 +86,7 @@ class Timer:
                 print(total_diff, ' + ', entry[2], '(', inspect.currentframe().f_lineno, ')')
                 total_diff += entry[2]
 
-            if self.status == self.paused_status:
+            if self.status == self.paused_status or self.status == self.stopped_status:
                 print("Status is paused:", inspect.currentframe().f_lineno)
                 self.total_diff = total_diff
             else:
@@ -142,11 +142,15 @@ class Timer:
             self.initialise_fresh_timer_entry()
 
     def stop_timer(self):
+        print("\n\n")
         print("stop_timer:", self.status)
-        self.status = self.stopped_status
-        print("Status changed to Stopped")
-        self.add_to_entries()
-        self.updateText()
+        print("\n\n")
+        if self.status == self.started_status or self.status == self.paused_status:
+            if self.status == self.started_status:
+                self.add_to_entries()
+            self.status = self.stopped_status
+            print("Status changed to stopped")
+            self.updateText()
 
     def initialise_fresh_timer_entry(self):
         print("initialise_fresh_timer_entry:", inspect.currentframe().f_lineno)
