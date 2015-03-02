@@ -348,6 +348,59 @@ Author: John Evans <john@grandadevans.com>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkSeparator" id="separator1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="client-timer-label">
+                    <property name="name">client-timer-status</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Not Started</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="client-timer-total-label">
+                    <property name="name">client-timer</property>
+                    <property name="visible">True</property>
+                    <property name="app_paintable">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">This is how long you have been working on the client's task</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="label" translatable="yes"> Task total</property>
+                    <property name="justify">center</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Courier 10 Pitch Bold Italic 14"/>
+                      <attribute name="style" value="normal"/>
+                      <attribute name="foreground" value="#000000000000"/>
+                      <attribute name="background" value="#eeeeeeeeecec"/>
+                    </attributes>
+                    <style>
+                      <class name=".timer"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkButton" id="button2">
                     <property name="label" translatable="yes">Work Details</property>
                     <property name="visible">True</property>
@@ -358,37 +411,11 @@ Author: John Evans <john@grandadevans.com>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="pack_type">end</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSeparator" id="separator1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_top">10</property>
-                    <property name="margin_bottom">10</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="client-timer-label">
-                    <property name="name">client-timer-status</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">label</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
                     <property name="position">6</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="client-timer1">
+                  <object class="GtkLabel" id="client-timer-total-status">
                     <property name="name">client-timer</property>
                     <property name="visible">True</property>
                     <property name="app_paintable">True</property>
@@ -397,8 +424,7 @@ Author: John Evans <john@grandadevans.com>
                     <property name="margin_bottom">10</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="label" translatable="yes"> Task total
-00d 00h 00m</property>
+                    <property name="label" translatable="yes">0d 00h 00m</property>
                     <property name="justify">center</property>
                     <attributes>
                       <attribute name="font-desc" value="Courier 10 Pitch Bold Italic 14"/>
@@ -554,30 +580,42 @@ Author: John Evans <john@grandadevans.com>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="billable-timer-label">
-                    <property name="name">billable-timer-status</property>
+                  <object class="GtkButton" id="button1">
+                    <property name="label" translatable="yes">Task Details</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">label</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
+                    <property name="pack_type">end</property>
                     <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="client-timer2">
+                  <object class="GtkLabel" id="billable-timer-label">
+                    <property name="name">billable-timer-status</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Not Started</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="billable-timer-total-label">
                     <property name="name">client-timer</property>
                     <property name="visible">True</property>
                     <property name="app_paintable">True</property>
                     <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">This is how long you have been working on the client's task</property>
-                    <property name="margin_bottom">10</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="label" translatable="yes">Task total
-00d 00h 00m</property>
+                    <property name="label" translatable="yes"> Task total</property>
                     <property name="justify">center</property>
                     <attributes>
                       <attribute name="font-desc" value="Courier 10 Pitch Bold Italic 14"/>
@@ -592,21 +630,35 @@ Author: John Evans <john@grandadevans.com>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
-                    <property name="position">5</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button1">
-                    <property name="label" translatable="yes">Task Details</property>
+                  <object class="GtkLabel" id="billable-timer-total-status">
+                    <property name="name">client-timer</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="app_paintable">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">This is how long you have been working on the client's task</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="label" translatable="yes">0d 00h 00m</property>
+                    <property name="justify">center</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Courier 10 Pitch Bold Italic 14"/>
+                      <attribute name="style" value="normal"/>
+                      <attribute name="foreground" value="#000000000000"/>
+                      <attribute name="background" value="#eeeeeeeeecec"/>
+                    </attributes>
+                    <style>
+                      <class name=".timer"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
-                    <property name="pack_type">end</property>
-                    <property name="position">5</property>
+                    <property name="position">7</property>
                   </packing>
                 </child>
               </object>
