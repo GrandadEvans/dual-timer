@@ -1,3 +1,4 @@
 .idea/
 old-timer.py
 dual-timer.glade~
+*.pyc
