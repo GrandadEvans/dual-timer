@@ -1,4 +1,6 @@
+import io
 import os
+import json
 
 class Project:
 
@@ -9,8 +11,15 @@ class Project:
         self.project_path = project["path"]
         self.project_start_date = project["start_date"]
         self.project_finish_date = project["finish_date"]
-        self.project_finish_date_type = self.convert_estimate_active(project["finish_date_type"])
+        self.project_finish_date_type = self.convert_estimate_type(project["finish_date_type"])
 
+        self.project_info = {
+            "project_name": self.project_name,
+            "project_dir":  self.project_path,
+            "project_start_date": self.project_start_date,
+            "project_finish_date": self.project_finish_date,
+            "project_finish_date_type": self.project_finish_date_type
+        }
 
         self.create_template()
 
@@ -24,7 +33,13 @@ class Project:
         self.create_project_info_file()
 
     def create_project_info_file(self):
-        pass
+        path = self.project_path + "/project-info.json"
+
+        print(path)
+        print(self.project_info)
+
+        f = io.open(path, "w")
+        json.dump(self.project_info, f, True, True, True, True, None, 1, (',', ': '))
 
     def create_project_directory(self):
         if not os.path.exists(self.project_path):

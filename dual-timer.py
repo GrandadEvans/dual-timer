@@ -37,7 +37,11 @@ class TutorialTextEditor:
             "finish_date": self.new_project_window_finish_date_input.get_date(),
             "finish_date_type": self.new_project_window_finish_date_type_input.get_active()
         })
-        print(self.project)
+        print("Project information file created")
+        self.new_project_window.hide()
+        self.project_choice_window.hide()
+        self.project_choice_button.set_label(self.project.project_info['project_name'])
+
 
     def __init__(self):
         builder = Gtk.Builder()
@@ -46,6 +50,7 @@ class TutorialTextEditor:
         self.window = builder.get_object("dual-timer-main-window")
         self.about_dialog = builder.get_object("about-window")
         self.new_project_window = builder.get_object("new-project-window")
+        self.project_choice_button = builder.get_object("project-choice-button")
         self.project_choice_window = builder.get_object("project-choice-window")
         self.new_project_window_name_input = builder.get_object("new-project-window-name-input")
         self.new_project_window_directory_input = builder.get_object("new-project-window-directory-input")
@@ -70,7 +75,6 @@ class TutorialTextEditor:
     def project_choice_window_show(self, widget, data=None):
         print("Showing the project choice window")
         self.response = self.project_choice_window.show()
-        # self.project_choice_window.hide()
 
 
 if __name__ == "__main__":

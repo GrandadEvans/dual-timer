@@ -696,7 +696,7 @@ Author: John Evans <john@grandadevans.com>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
+              <object class="GtkButton" id="project-choice-button">
                 <property name="label" translatable="yes">Choose Project</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
