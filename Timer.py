@@ -10,9 +10,11 @@ class Timer:
 
         # The label
         self.status_label = builder.get_object(name + "-timer-label")
+        # self.dock_status_label = builder.get_object(name + "-timer-dock_label")
 
         # The counter that is updated
         self.status_counter = builder.get_object(name + "-timer-status")
+        self.dock_status_counter = builder.get_object(name + "-timer-dock-status")
 
         # The status
         self.status = "No actions yet"
@@ -60,10 +62,13 @@ class Timer:
     def updateText(self):
         # print("updateText:", inspect.currentframe().f_lineno)
         time_string = self.format_time_string()
+        time_string_for_dock = self.format_time_string_for_dock()
         # print(time_string)
         self.status_counter.set_text(time_string)
+        self.dock_status_counter.set_text(time_string_for_dock)
         # print(inspect.currentframe().f_lineno)
         self.status_label.set_text(self.status)
+        # self.dock_status_label.set_text(self.status)
         # print(inspect.currentframe().f_lineno)
 
     def reset_counter(self):
@@ -146,3 +151,15 @@ class Timer:
         time_string = time_list[0] + "h "  + time_list[1] + "m " + time_list[2] + "s"
         # print("Time string:", time_string, inspect.currentframe().f_lineno)
         return time_string
+
+    def format_time_string_for_dock(self):
+        # print("format_time_string:", inspect.currentframe().f_lineno)
+        self.calculate_total_diff()
+        # print("Total diff:", self.total_diff, inspect.currentframe().f_lineno)
+
+        return str(datetime.timedelta(seconds=self.total_diff))
+        # time_list = str(datetime.timedelta(seconds=self.total_diff)).split(':')
+        # print(time_list)
+        # time_string = time_list[0] + ":"  + time_list[1] + ":" + time_list[2] + "s"
+        # print("Time string:", time_string, inspect.currentframe().f_lineno)
+        # return time_string

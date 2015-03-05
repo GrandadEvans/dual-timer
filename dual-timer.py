@@ -3,6 +3,7 @@
 from Timer import Timer
 from Project import Project
 from gi.repository import Gtk
+from gi.repository import Gdk
 
 class TutorialTextEditor:
 
@@ -57,6 +58,7 @@ class TutorialTextEditor:
         self.new_project_window_start_date_input = builder.get_object("new-project-window-start-date-input")
         self.new_project_window_finish_date_input = builder.get_object("new-project-window-finish-date-input")
         self.new_project_window_finish_date_type_input = builder.get_object("new-project-window-finish-date-type-input")
+        self.toolbar = builder.get_object("toolbar")
 
         builder.connect_signals(self)
 
@@ -76,6 +78,20 @@ class TutorialTextEditor:
         print("Showing the project choice window")
         self.response = self.project_choice_window.show()
 
+    def toolbar_show(self, widget, data=None):
+        self.toolbar.show()
+
+        screen_width = Gdk.Screen.width()
+        screen_height = Gdk.Screen.height()
+        window_width, window_height = Gtk.Window.get_size(self.toolbar)
+        Gtk.Window.move(self.toolbar, (screen_width / 2) - (window_width / 2), screen_height)
+        Gtk.Window.set_keep_above(self.toolbar, True)
+
+        self.window.hide()
+
+    def timer_dock_expand(self, widget, data=None):
+        self.window.show()
+        self.toolbar.hide()
 
 if __name__ == "__main__":
     editor = TutorialTextEditor()
