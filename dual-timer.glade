@@ -1077,6 +1077,9 @@ Do you want to grant Dual Timer access to your Freeagent account?</property>
               </packing>
             </child>
             <child>
+              <placeholder/>
+            </child>
+            <child>
               <object class="GtkGrid" id="grid3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
