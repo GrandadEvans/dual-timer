@@ -1,9 +1,11 @@
 #! /usr/bin/python3
 
-from Timer import Timer
-from Project import Project
 from gi.repository import Gtk
 from gi.repository import Gdk
+
+from Timer import Timer
+import Project
+
 
 class TutorialTextEditor:
 
