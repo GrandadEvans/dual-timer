@@ -39,3 +39,6 @@ class Timer:
 
         self.duration = int(self.duration) + 1
         return True
+
+    def pause_timer(self):
+        self.status = "Paused"
