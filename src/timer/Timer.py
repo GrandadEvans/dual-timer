@@ -45,3 +45,6 @@ class Timer:
 
     def stop_timer(self):
         self.status = "Stopped"
+
+    def restart_timer(self):
+        self.status = "Re-started"

@@ -81,3 +81,8 @@ class TestTimer:
         timer = Timer()
         timer.stop_timer()
         assert(timer.status == "Stopped")
+
+    def test_the_restart_timer_method_works(self):
+        timer = Timer()
+        timer.restart_timer()
+        assert(timer.status == "Re-started")
