@@ -4,6 +4,8 @@ Class responsible for all the timer functionality
 """
 
 import uuid
+
+from gi.repository import GLib
 # import Third party
 
 # import local
@@ -25,4 +27,12 @@ class Timer:
         self.status = "Not Yet Started"
 
     def start_timer(self):
+        print('in start_timer')
         self.status = "Started"
+        # GLib.timeout_add_seconds(priority=1,
+        #                          interval=1,
+        #                          function=self.update_duration)
+
+    def update_duration(self):
+        self.duration = int(self.duration) + 1
+        return True
