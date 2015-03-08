@@ -34,7 +34,7 @@ class Timer:
         #                          function=self.update_duration)
 
     def update_duration(self):
-        if self.status.lower() == "paused":
+        if self.status.lower() == "paused" or self.status.lower() == "stopped":
             return False
 
         self.duration = int(self.duration) + 1

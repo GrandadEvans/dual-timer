@@ -62,3 +62,12 @@ class TestTimer:
         timer.status = "Paused"
         timer.update_duration()
         assert(timer.duration == 1)
+
+    def test_the_duration_does_not_increment_if_the_status_is_stopped(self):
+        timer = Timer()
+        assert(timer.duration == 0)
+        timer.update_duration()
+        assert(timer.duration == 1)
+        timer.status = "Stopped"
+        timer.update_duration()
+        assert(timer.duration == 1)
