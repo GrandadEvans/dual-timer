@@ -76,3 +76,8 @@ class TestTimer:
         timer = Timer()
         timer.pause_timer()
         assert(timer.status == "Paused")
+
+    def test_the_stop_timer_method_works(self):
+        timer = Timer()
+        timer.stop_timer()
+        assert(timer.status == "Stopped")

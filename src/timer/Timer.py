@@ -42,3 +42,6 @@ class Timer:
 
     def pause_timer(self):
         self.status = "Paused"
+
+    def stop_timer(self):
+        self.status = "Stopped"
