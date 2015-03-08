@@ -72,6 +72,15 @@ class TestTimer:
         timer.update_duration()
         assert(timer.duration == 1)
 
+    def test_the_duration_increment_if_the_status_is_started(self):
+        timer = Timer()
+        assert(timer.duration == 0)
+        timer.update_duration()
+        assert(timer.duration == 1)
+        timer.status = "Started"
+        timer.update_duration()
+        assert(timer.duration == 2)
+
     def test_the_pause_timer_method_works(self):
         timer = Timer()
         timer.pause_timer()
