@@ -4,6 +4,7 @@ Class responsible for all the timer functionality
 """
 
 import uuid
+import datetime
 
 from gi.repository import GLib
 # import Third party
@@ -48,3 +49,6 @@ class Timer:
 
     def restart_timer(self):
         self.status = "Re-started"
+
+    def get_short_format_duration_string(self):
+        return str(datetime.timedelta(seconds=self.duration))

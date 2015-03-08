@@ -104,3 +104,10 @@ class TestTimer:
         timer = Timer()
         timer.restart_timer()
         assert(timer.status == "Re-started")
+
+    def test_we_can_get_the_short_task_time_from_the_duration(self):
+        timer = Timer()
+        timer.duration = 85
+        assert(timer.get_short_format_duration_string() == '0:01:25')
+        timer.duration = (120 * 60) + 105
+        assert(timer.get_short_format_duration_string() == '2:01:45')
