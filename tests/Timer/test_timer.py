@@ -92,6 +92,7 @@ class TestTimer:
 
     def test_the_pause_timer_method_works(self):
         timer = Timer()
+        timer.start_timer()
         timer.pause_timer()
         assert(timer.status == "Paused")
 
@@ -126,4 +127,25 @@ class TestTimer:
     def test_the_start_timer_adds_a_new_entry(self):
         timer = Timer()
         timer.start_timer()
-        assert(len(timer.entries) == 1)
+        assert len(timer.entries) == 1
+
+        entry = timer.entries[0]
+        assert type(entry["start"]) is float
+        assert entry["end"] is None
+        assert entry["duration"] == 0
+
+    def test_the_pause_timer_ends_the_new_entry(self):
+        timer = Timer()
+        timer.start_timer()
+        assert len(timer.entries) == 1
+        timer.pause_timer()
+        assert type(timer.entries[0]["end"]) is float
+
+    def test_we_can_get_the_total_duration(self):
+        timer = Timer()
+        timer.entries = [
+            {"start": 1, "end": 2, "duration": 1},
+            {"start": 4, "end": 8, "duration": 4},
+            {"start": 16, "end": 32, "duration": 16}
+        ]
+        assert timer.get_total_duration() == 21

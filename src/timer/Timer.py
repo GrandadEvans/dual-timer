@@ -51,6 +51,8 @@ class Timer:
 
     def pause_timer(self):
         self.status = "Paused"
+        index = self.get_current_entry_index()
+        self.entries[index]["end"] = time.time()
 
     def stop_timer(self):
         self.status = "Stopped"
@@ -74,3 +76,15 @@ class Timer:
         if len(bit) == 1:
             return '0' + bit
         return bit
+
+    def get_current_entry_index(self):
+        index = len(self.entries)
+        if index == -1:
+            return 0
+        return index - 1
+
+    def get_total_duration(self):
+        total = 0
+        for entry in self.entries:
+            total += entry["duration"]
+        return total
