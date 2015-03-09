@@ -122,3 +122,8 @@ class TestTimer:
     def test_we_start_with_an_empty_list_of_entries(self):
         timer = Timer()
         assert(len(timer.entries) == 0)
+
+    def test_the_start_timer_adds_a_new_entry(self):
+        timer = Timer()
+        timer.start_timer()
+        assert(len(timer.entries) == 1)

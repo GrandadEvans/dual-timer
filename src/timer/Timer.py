@@ -4,6 +4,7 @@ Class responsible for all the timer functionality
 """
 
 import uuid
+import time
 import datetime
 
 from gi.repository import GLib
@@ -31,6 +32,12 @@ class Timer:
     def start_timer(self):
         print('in start_timer')
         self.status = "Started"
+        new_entry = {
+            "start": time.time(),
+            "end": None,
+            "duration": 0
+        }
+        self.entries.append(new_entry)
         # GLib.timeout_add_seconds(priority=1,
         #                          interval=1,
         #                          function=self.update_duration)
