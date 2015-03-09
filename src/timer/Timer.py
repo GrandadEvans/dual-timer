@@ -26,6 +26,7 @@ class Timer:
         self.id = uuid.uuid4()
         self.duration = 0
         self.status = "Not Yet Started"
+        self.entries = []
 
     def start_timer(self):
         print('in start_timer')
@@ -65,5 +66,4 @@ class Timer:
     def add_zero(self, bit):
         if len(bit) == 1:
             return '0' + bit
-
         return bit

@@ -118,3 +118,7 @@ class TestTimer:
         assert(timer.get_long_format_duration_string() == '02h 01m')
         timer.duration = 1275 * 60
         assert(timer.get_long_format_duration_string() == '21h 15m')
+
+    def test_we_start_with_an_empty_list_of_entries(self):
+        timer = Timer()
+        assert(len(timer.entries) == 0)
