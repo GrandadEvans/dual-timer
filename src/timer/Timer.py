@@ -52,3 +52,18 @@ class Timer:
 
     def get_short_format_duration_string(self):
         return str(datetime.timedelta(seconds=self.duration))
+
+    def get_long_format_duration_string(self):
+        short = self.get_short_format_duration_string()
+
+        bits = short.split(':')
+        h = str(self.add_zero(bits[0])) + 'h'
+        m = str(self.add_zero(bits[1])) + 'm'
+
+        return h + ' ' + m
+
+    def add_zero(self, bit):
+        if len(bit) == 1:
+            return '0' + bit
+
+        return bit

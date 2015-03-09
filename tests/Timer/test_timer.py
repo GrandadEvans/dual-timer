@@ -111,3 +111,10 @@ class TestTimer:
         assert(timer.get_short_format_duration_string() == '0:01:25')
         timer.duration = (120 * 60) + 105
         assert(timer.get_short_format_duration_string() == '2:01:45')
+
+    def test_we_can_get_the_long_task_time_from_the_duration(self):
+        timer = Timer()
+        timer.duration = (120 * 60) + 105
+        assert(timer.get_long_format_duration_string() == '02h 01m')
+        timer.duration = 1275 * 60
+        assert(timer.get_long_format_duration_string() == '21h 15m')
