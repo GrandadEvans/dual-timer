@@ -149,3 +149,14 @@ class TestTimer:
             {"start": 16, "end": 32, "duration": 16}
         ]
         assert timer.get_total_duration() == 21
+
+    def test_the_timer_restarts_after_the_status_changes(self):
+        timer = Timer()
+        timer.start_timer()
+        timer.pause_timer()
+        timer.start_timer()
+
+        assert len(timer.entries) == 2
+        assert type(timer.entries[1]["start"]) is float
+        assert timer.entries[1]["end"] is None
+        assert timer.entries[1]["duration"] == 0
