@@ -89,3 +89,6 @@ class Timer:
         for entry in self.entries:
             total += entry["duration"]
         return total
+
+    def clear_entries(self):
+        self.entries = []

@@ -161,3 +161,10 @@ class TestTimer:
         assert type(timer.entries[1]["start"]) is float
         assert timer.entries[1]["end"] is None
         assert timer.entries[1]["duration"] == 0
+
+    def test_we_can_clear_the_entries_once_they_have_been_persisted(self):
+        timer = Timer()
+        timer.entries = [{}, {}, {}]
+        assert len(timer.entries) == 3
+        timer.clear_entries()
+        assert len(timer.entries) == 0
