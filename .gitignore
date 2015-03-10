@@ -6,3 +6,4 @@ dual-timer.glade~
 *.glade#
 htmlcov/
 .coverage
+.cache

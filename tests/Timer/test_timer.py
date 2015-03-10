@@ -18,111 +18,112 @@ __maintainer__ = "John Evans"
 __email__ = "john@grandadevans.com"
 __status__ = "Development"
 
+
 class TestTimer:
 
     def test_the_class_is_initialised_with_a_start_of_zero(self):
         duration = Timer().duration
-        assert(duration == 0)
+        assert duration == 0
 
     def test_we_are_returned_a_unique_id_for_new_timers(self):
         id = str(Timer().id)
-        assert(len(id) == 36)
+        assert len(id) == 36
 
     def test_we_have_the_correct_timer_status_on_instantiation(self):
         status = Timer().status
-        assert(status.lower() == 'not yet started')
+        assert status.lower() == 'not yet started'
 
     def test_the_status_changes_when_we_start_the_timer(self):
         timer = Timer()
         timer.start_timer()
         status = timer.status
-        assert(status.lower() == 'started')
+        assert status.lower() == 'started'
 
     # def test_the_timer_runs_when_the_status_is_started(self):
     #     timer = Timer()
     #     timer.start_timer()
     #     GLib.timeout_add_seconds(1, 3, self.return_false)
     #     print(timer.duration)
-    #     assert(timer.duration == 3)
+    #     assert timer.duration == 3
     #
     # def return_false(self):
     #     return False
 
     def test_the_duration_updates_when_update_duration_is_called(self):
         timer = Timer()
-        assert(timer.duration == 0)
+        assert timer.duration == 0
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
 
     def test_the_duration_does_not_increment_if_the_status_isnt_started(self):
         timer = Timer()
-        assert(timer.duration == 0)
+        assert timer.duration == 0
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
         timer.status = "Paused"
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
 
     def test_the_duration_does_not_increment_if_the_status_is_stopped(self):
         timer = Timer()
-        assert(timer.duration == 0)
+        assert timer.duration == 0
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
         timer.status = "Stopped"
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
 
     def test_the_duration_increment_if_the_status_is_started(self):
         timer = Timer()
-        assert(timer.duration == 0)
+        assert timer.duration == 0
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
         timer.status = "Started"
         timer.update_duration()
-        assert(timer.duration == 2)
+        assert timer.duration == 2
 
     def test_the_duration_increment_if_the_status_is_restarted(self):
         timer = Timer()
-        assert(timer.duration == 0)
+        assert timer.duration == 0
         timer.update_duration()
-        assert(timer.duration == 1)
+        assert timer.duration == 1
         timer.status = "Re-started"
         timer.update_duration()
-        assert(timer.duration == 2)
+        assert timer.duration == 2
 
     def test_the_pause_timer_method_works(self):
         timer = Timer()
         timer.start_timer()
         timer.pause_timer()
-        assert(timer.status == "Paused")
+        assert timer.status == "Paused"
 
     def test_the_stop_timer_method_works(self):
         timer = Timer()
         timer.stop_timer()
-        assert(timer.status == "Stopped")
+        assert timer.status == "Stopped"
 
     def test_the_restart_timer_method_works(self):
         timer = Timer()
         timer.restart_timer()
-        assert(timer.status == "Re-started")
+        assert timer.status == "Re-started"
 
     def test_we_can_get_the_short_task_time_from_the_duration(self):
         timer = Timer()
         timer.duration = 85
-        assert(timer.get_short_format_duration_string() == '0:01:25')
+        assert timer.get_short_format_duration_string() == '0:01:25'
         timer.duration = (120 * 60) + 105
-        assert(timer.get_short_format_duration_string() == '2:01:45')
+        assert timer.get_short_format_duration_string() == '2:01:45'
 
     def test_we_can_get_the_long_task_time_from_the_duration(self):
         timer = Timer()
         timer.duration = (120 * 60) + 105
-        assert(timer.get_long_format_duration_string() == '02h 01m')
+        assert timer.get_long_format_duration_string() == '02h 01m'
         timer.duration = 1275 * 60
-        assert(timer.get_long_format_duration_string() == '21h 15m')
+        assert timer.get_long_format_duration_string() == '21h 15m'
 
     def test_we_start_with_an_empty_list_of_entries(self):
         timer = Timer()
-        assert(len(timer.entries) == 0)
+        assert len(timer.entries) == 0
 
     def test_the_start_timer_adds_a_new_entry(self):
         timer = Timer()
