@@ -7,3 +7,4 @@ dual-timer.glade~
 htmlcov/
 .coverage
 .cache
+node_modules
