@@ -28,3 +28,9 @@ class TestTimer:
     def test_we_have_the_correct_timer_status_on_instantiation(self):
         status = Timer().status
         assert(status.lower() == 'not yet started')
+
+    def test_the_status_changes_when_we_start_the_timer(self):
+        timer = Timer()
+        timer.start_timer()
+        status = timer.status
+        assert(status.lower() == 'started')

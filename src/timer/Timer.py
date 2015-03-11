@@ -23,3 +23,6 @@ class Timer:
         self.id = uuid.uuid4()
         self.duration = 0
         self.status = "Not Yet Started"
+
+    def start_timer(self):
+        self.status = "Started"
