@@ -18,6 +18,9 @@ __status__ = "Development"
 class TestTimer:
 
     def test_the_class_is_initialised_with_a_start_of_zero(self):
-        timer = Timer()
-        duration = timer.duration
+        duration = Timer().duration
         assert(duration == 0)
+
+    def test_we_are_returned_a_unique_id_for_new_timers(self):
+        id = str(Timer().id)
+        assert(len(id) == 36)

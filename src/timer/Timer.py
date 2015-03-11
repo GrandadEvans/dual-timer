@@ -3,8 +3,7 @@
 Class responsible for all the timer functionality
 """
 
-# import built in modules
-
+import uuid
 # import Third party
 
 # import local
@@ -21,4 +20,5 @@ __status__ = "Development"
 class Timer:
 
     def __init__(self):
+        self.id = uuid.uuid4()
         self.duration = 0
