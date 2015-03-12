@@ -5,7 +5,6 @@ Class responsible for testing the timer functionality
 
 import pytest
 import time
-from gi.repository import GLib
 
 from ...src.timer.Timer import Timer
 
