@@ -3,7 +3,7 @@
 Tests to make sure that we have non empty URLS for the Freeagent API calls
 """
 
-from DualTimer.Src.FreeagentTemplate.URLs import URLs
+from DualTimer.Src.Freeagent.URLs import URLs
 
 
 class TestFreeagentURLs:
