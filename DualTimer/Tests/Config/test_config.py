@@ -9,7 +9,7 @@ API OAuth data out of the Version Control System
 
 import pytest
 
-from DualTimer.Src.Config.Freeagent import Freeagent
+from DualTimer.Src.Config.FreeagentTemplate import Freeagent
 
 
 class TestConfig:
