@@ -30,7 +30,7 @@ class TaskFile:
         self.file_object = None
 
     def create(self, file_path):
-        f = open(file_path, 'x')
+        f = open(file_path, 'a')
         self.file_object = f
 
     def write(self, file_path, data_to_write, mode="a"):
