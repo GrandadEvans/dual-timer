@@ -1,12 +1,12 @@
 #! /usr/bin/env python3
 """
-Class responsible for testing the timer functionality
+Class responsible for testing the Timer functionality
 """
 
 import pytest
 import time
 
-from ...src.timer.Timer import Timer
+from DualTimer.Src.Timer.Timer import Timer
 
 __author__ = "John Evans <john@grandadevans.com?"
 __copyright__ = "Copyright 2015, John Evans"
@@ -39,11 +39,11 @@ class TestTimer:
         assert status.lower() == 'started'
 
     # def test_the_timer_runs_when_the_status_is_started(self):
-    #     timer = Timer()
-    #     timer.start_timer()
+    #     Timer = Timer()
+    #     Timer.start_timer()
     #     GLib.timeout_add_seconds(1, 3, self.return_false)
-    #     print(timer.duration)
-    #     assert timer.duration == 3
+    #     print(Timer.duration)
+    #     assert Timer.duration == 3
     #
     # def return_false(self):
     #     return False

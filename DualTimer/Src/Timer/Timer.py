@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Class responsible for all the timer functionality
+Class responsible for all the Timer functionality
 """
 
 import uuid

@@ -1,14 +1,15 @@
 #! /usr/bin/env python3
 """
-Tests to make sure that we have the correct config keys in a template file
+Tests to make sure that we have the correct Config keys in a template File
 
 The system will be responsible for converting this template into the correct
-config file once it is installed. But this way it keeps the real ie my
+Config File once it is installed. But this way it keeps the real ie my
 API OAuth data out of the Version Control System
 """
 
 import pytest
-from ...src.config.FreeagentTemplate import Freeagent
+
+from DualTimer.Src.Config.Freeagent import Freeagent
 
 
 class TestConfig:

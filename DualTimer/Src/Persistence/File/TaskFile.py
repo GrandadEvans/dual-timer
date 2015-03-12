@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Class responsible for all the timer functionality
+Class responsible for all the Timer functionality
 """
 
 import io
@@ -26,7 +26,7 @@ __status__ = "Development"
 class TaskFile:
 
     def __init__(self):
-        self.base_dir = '/home/john/applications/dual_timer/'
+        self.base_dir = os.path.dirname(__file__) + '/../../../'
         self.file_object = None
 
     def create(self, file_path):

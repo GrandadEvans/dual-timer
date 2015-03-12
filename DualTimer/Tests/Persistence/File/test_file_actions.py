@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Test file to test all the file persistent implementations
+Test File to test all the File persistent implementations
 """
 
 import pytest
@@ -12,8 +12,8 @@ from os import path
 
 # import Third party
 
-# import local
-from ....src.persistence.file.TaskFile import TaskFile
+# impo  rt local
+from DualTimer.Src.Persistence.File.TaskFile import TaskFile
 
 __author__ = "John Evans <john@grandadevans.com?"
 __copyright__ = "Copyright 2015, John Evans"
@@ -29,7 +29,6 @@ class TestFileActions:
 
     def setup_class(self):
         ts = str(time.time()).split('.')[0]
-        print(TaskFile().base_dir)
         self.test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
 
     def test_we_can_create_a_file(self):
@@ -43,7 +42,7 @@ class TestFileActions:
         f.write(self.test_path, 'Hello World!')
         handler = open(self.test_path, 'r')
         assert("Hello World!" in handler.read(),
-               "Hello World! was not found in the file contents")
+               "Hello World! was not found in the File contents")
         os.remove(self.test_path)
 
     def test_we_can_update_a_file(self):
@@ -52,7 +51,7 @@ class TestFileActions:
         f.update(self.test_path, '...Yes, Hello World!')
         handler = open(self.test_path, 'r')
         assert("Hello World!...Yes, Hello World" in handler.read(),
-               "Updated text was not found in the file contents")
+               "Updated text was not found in the File contents")
         os.remove(self.test_path)
 
     def test_we_can_delete_a_file(self):
