@@ -39,9 +39,6 @@ class Timer:
             "duration": 0
         }
         self.entries.append(new_entry)
-        # GLib.timeout_add_seconds(priority=1,
-        #                          interval=1,
-        #                          function=self.update_duration)
 
     def update_duration(self):
         if self.status.lower() == "paused" or self.status.lower() == "stopped":
