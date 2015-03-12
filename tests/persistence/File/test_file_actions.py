@@ -27,49 +27,38 @@ __status__ = "Development"
 
 class TestFileActions:
 
-    def test_we_can_create_a_file(self):
+    def setup_class(self):
         ts = str(time.time()).split('.')[0]
-        f = TaskFile()
-        test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
-        f.create(test_path)
-        assert(path.isfile(test_path) is True)
+        print(TaskFile().base_dir)
+        self.test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
 
-        os.remove(test_path)
+    def test_we_can_create_a_file(self):
+        f = TaskFile()
+        f.create(self.test_path)
+        assert(path.isfile(self.test_path) is True, "File does not exist")
+        os.remove(self.test_path)
 
     def test_we_can_write_to_a_file(self):
-        ts = str(time.time()).split('.')[0]
-        test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
         f = TaskFile()
-        f.write(test_path, 'Hello World!')
-
-        handler = open(test_path, 'r')
-        print(handler)
-        assert("Hello World!" in handler.read())
-        os.remove(test_path)
+        f.write(self.test_path, 'Hello World!')
+        handler = open(self.test_path, 'r')
+        assert("Hello World!" in handler.read(),
+               "Hello World! was not found in the file contents")
+        os.remove(self.test_path)
 
     def test_we_can_update_a_file(self):
-        ts = str(time.time()).split('.')[0]
-        test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
         f = TaskFile()
-        f.write(test_path, 'Hello World!')
-
-        ts = str(time.time()).split('.')[0]
-        test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
-        f = TaskFile()
-        f.update(test_path, '...Yes, Hello World!')
-
-        handler = open(test_path, 'r')
-        print(handler)
-        assert("Hello World!...Yes, Hello World" in handler.read())
-        os.remove(test_path)
+        f.write(self.test_path, 'Hello World!')
+        f.update(self.test_path, '...Yes, Hello World!')
+        handler = open(self.test_path, 'r')
+        assert("Hello World!...Yes, Hello World" in handler.read(),
+               "Updated text was not found in the file contents")
+        os.remove(self.test_path)
 
     def test_we_can_delete_a_file(self):
-        ts = str(time.time()).split('.')[0]
         f = TaskFile()
-        test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
-        f.create(test_path)
-        assert (path.isfile(test_path) is True)
-
+        f.create(self.test_path)
+        assert (path.isfile(self.test_path) is True, "File was not created")
         f = TaskFile()
-        f.delete(test_path)
-        assert (path.isfile(test_path) is False)
+        f.delete(self.test_path)
+        assert (path.isfile(self.test_path) is False, "File was not deleted")
