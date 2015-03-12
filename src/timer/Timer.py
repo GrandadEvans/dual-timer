@@ -7,7 +7,6 @@ import uuid
 import time
 import datetime
 
-from gi.repository import GLib
 # import Third party
 
 # import local
