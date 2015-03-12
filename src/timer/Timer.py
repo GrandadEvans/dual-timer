@@ -80,8 +80,6 @@ class Timer:
 
     def get_current_entry_index(self):
         index = len(self.entries)
-        if index == -1:
-            return 0
         return index - 1
 
     def get_total_duration(self):
