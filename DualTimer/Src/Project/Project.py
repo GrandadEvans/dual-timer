@@ -35,7 +35,6 @@ class Project:
             raise Exception("Project already exists")
         os.mkdir(self.project_path)
 
-
     def create_project_info_file(self):
         return open(Config().paths()[
                         "base"] + "stubs/Project/project.json", 'w')
