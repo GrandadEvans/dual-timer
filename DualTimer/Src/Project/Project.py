@@ -31,7 +31,10 @@ class Project:
         print(self.project_path)
 
     def create_project_directory(self):
+        if os.path.isdir(self.project_path):
+            raise Exception("Project already exists")
         os.mkdir(self.project_path)
+
 
     def create_project_info_file(self):
         return open(Config().paths()[

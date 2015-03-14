@@ -51,7 +51,7 @@ class TestProject:
 
     # Todo: Create a "Project already exists exception
     def test_we_throw_an_exception_if_the_directory_exists(self):
-        with pytest.raises(FileExistsError):
+        with pytest.raises(Exception):
             project = Project("Test Project Name")
             project.create_project_directory()
 
