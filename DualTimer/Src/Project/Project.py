@@ -37,7 +37,7 @@ class Project:
 
     def create_project_info_file(self):
         return open(Config().paths()[
-                        "base"] + "stubs/Project/project.json", 'w')
+            "base"] + "stubs/Project/project.json", 'w')
 
     def create_the_project_info(self):
         fp = self.create_project_info_file()
