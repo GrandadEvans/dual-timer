@@ -72,4 +72,7 @@ class TestProject:
         project.create_the_project_info()
         fp = open(self.project_info_file)
         info = json.loads(fp.read())
-        assert info["project_name"] == "Test Project Name"
+        assert info["name"] == "Test Project Name"
+        assert info["start_date"] is None
+        assert info["end_date"] is None
+        assert info["end_date_type"] is None

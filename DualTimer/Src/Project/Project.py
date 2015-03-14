@@ -41,4 +41,9 @@ class Project:
 
     def create_the_project_info(self):
         fp = self.create_project_info_file()
-        fp.write(json.dumps({"project_name": self.project_name}))
+        fp.write(json.dumps({
+            "name": self.project_name,
+            "start_date": None,
+            "end_date": None,
+            "end_date_type": None
+        }))
