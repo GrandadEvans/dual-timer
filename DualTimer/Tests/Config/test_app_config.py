@@ -23,7 +23,7 @@ __status__ = "Development"
 class TestAppConfig:
 
     def test_base_directory_set(self):
-        dir_ = Config().config()["base_dir"]
+        dir_ = Config().paths()["base"]
         print(dir_)
         assert len(dir_) is not 0,\
             "Base Directory is not set in config"

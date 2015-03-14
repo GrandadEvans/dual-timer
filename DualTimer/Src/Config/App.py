@@ -22,7 +22,7 @@ __status__ = "Development"
 
 class App:
 
-    def config(self):
+    def paths(self):
         return {
-            "base_dir": os.path.dirname(__file__) + "/../../"
+            "base": os.path.dirname(__file__) + "/../../"
         }
