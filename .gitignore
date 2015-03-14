@@ -9,3 +9,4 @@ htmlcov/
 .cache
 node_modules
 DualTimer/stubs/*.txt
+stubs/
