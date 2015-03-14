@@ -6,6 +6,7 @@ Tests for the project class
 # import built in modules
 import pytest
 import os
+import json
 
 # import Third party
 
@@ -26,16 +27,23 @@ __status__ = "Development"
 class TestProject:
 
     def setup_class(self):
-        print(Config().paths()["base"] + "stubs/Project")
-        self.project_path = Config().paths()["base"] + "stubs/Project"
+        self.project_path = Config().paths()["base"] + "stubs/Project/"
+        self.project_info_file = self.project_path + "project.json"
+
+    @pytest.fixture
+    def clear_old_files(self):
+        if os.path.isfile(self.project_info_file) is True:
+            os.remove(self.project_info_file)
+        if os.path.isdir(self.project_path) is True:
+            os.removedirs(self.project_path)
 
     def test_the_project_is_instantiated_with_its_name(self):
         assert \
             Project("Test Project Name").project_name == "Test Project Name", \
             "Project name is not being set on project instantiation"
 
-    def test_we_can_create_the_project_directory(self):
-        os.removedirs(self.project_path)
+    def test_we_can_create_the_project_directory(self, clear_old_files):
+        clear_old_files
         project = Project("Test Project Name")
         project.create_project_directory()
         assert os.path.isdir(self.project_path) is True, \
@@ -46,3 +54,22 @@ class TestProject:
         with pytest.raises(FileExistsError):
             project = Project("Test Project Name")
             project.create_project_directory()
+
+    def test_we_create_a_project_file(self, clear_old_files):
+        clear_old_files
+        project = Project("Test Project Name")
+        project.create_project_directory()
+        project.create_project_info_file()
+
+        assert os.path.isfile(self.project_info_file) \
+            is True, "Project info file is not found"
+
+    def test_the_project_info_file_holds_the_right_info(self, clear_old_files):
+        clear_old_files
+        project = Project("Test Project Name")
+        project.create_project_directory()
+        project.create_project_info_file()
+        project.create_the_project_info()
+        fp = open(self.project_info_file)
+        info = json.loads(fp.read())
+        assert info["project_name"] == "Test Project Name"

@@ -5,6 +5,7 @@ Class to take care of the projects
 
 # import built in modules
 import os
+import json
 
 # import Third party
 
@@ -26,8 +27,16 @@ class Project:
 
     def __init__(self, project_name):
         self.project_name = project_name
-        self.project_path = Config().paths()["base"] + 'stubs/Project'
+        self.project_path = Config().paths()["base"] + 'stubs/Project/'
         print(self.project_path)
 
     def create_project_directory(self):
         os.mkdir(self.project_path)
+
+    def create_project_info_file(self):
+        return open(Config().paths()[
+                        "base"] + "stubs/Project/project.json", 'w')
+
+    def create_the_project_info(self):
+        fp = self.create_project_info_file()
+        fp.write(json.dumps({"project_name": self.project_name}))
