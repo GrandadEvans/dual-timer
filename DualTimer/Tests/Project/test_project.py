@@ -72,7 +72,19 @@ class TestProject:
         project.create_the_project_info()
         fp = open(self.project_info_file)
         info = json.loads(fp.read())
+        """
+        Asserts are below as separate asserts and not asserting a full list
+        etc as I don't care about the format it is stored in I just want
+        to make sure that the correct information is returned
+        """
         assert info["name"] == "Test Project Name"
         assert info["start_date"] is None
         assert info["end_date"] is None
         assert info["end_date_type"] is None
+        assert info["contacts"] == []
+        assert info["billing"]["billable"] is True
+        assert info["billing"]["billable_unit"] == "hours"
+        assert info["billing"]["billable_rate"] == 0.00
+        assert info["billing"]["currency"] == "GBP"
+        assert info["budget"]["unit"] == "hours"
+        assert info["budget"]["value"] == 0

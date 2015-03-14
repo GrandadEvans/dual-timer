@@ -45,5 +45,16 @@ class Project:
             "name": self.project_name,
             "start_date": None,
             "end_date": None,
-            "end_date_type": None
+            "end_date_type": None,
+            "contacts": [],
+            "billing": {
+                "billable": True,
+                "billable_unit": "hours",
+                "billable_rate": 0.00,
+                "currency": "GBP"
+            },
+            "budget": {
+                "unit": "hours",
+                "value": 0
+            }
         }))
