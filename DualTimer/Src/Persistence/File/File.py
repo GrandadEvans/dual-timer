@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Class responsible for all the Timer functionality
+Class responsible for all the all file manipulations
 """
 
 import io
@@ -23,7 +23,7 @@ __email__ = "john@grandadevans.com"
 __status__ = "Development"
 
 
-class TaskFile:
+class File:
 
     def __init__(self):
         self.base_dir = os.path.dirname(__file__) + '/../../../'

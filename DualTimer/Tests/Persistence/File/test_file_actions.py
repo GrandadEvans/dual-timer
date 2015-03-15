@@ -13,7 +13,7 @@ from os import path
 # import Third party
 
 # impo  rt local
-from DualTimer.Src.Persistence.File.TaskFile import TaskFile
+from DualTimer.Src.Persistence.File.File import File
 
 __author__ = "John Evans <john@grandadevans.com?"
 __copyright__ = "Copyright 2015, John Evans"
@@ -29,16 +29,16 @@ class TestFileActions:
 
     def setup_class(self):
         ts = str(time.time()).split('.')[0]
-        self.test_path = TaskFile().base_dir + 'stubs/' + ts + '.txt'
+        self.test_path = File().base_dir + 'stubs/' + ts + '.txt'
 
     def test_we_can_create_a_file(self):
-        f = TaskFile()
+        f = File()
         f.create(self.test_path)
         assert path.isfile(self.test_path) is True, "File does not exist"
         os.remove(self.test_path)
 
     def test_we_can_write_to_a_file(self):
-        f = TaskFile()
+        f = File()
         f.write(self.test_path, 'Hello World!')
         handler = open(self.test_path, 'r')
         assert "Hello World!" in handler.read(), "Hello World! was not " \
@@ -46,7 +46,7 @@ class TestFileActions:
         os.remove(self.test_path)
 
     def test_we_can_update_a_file(self):
-        f = TaskFile()
+        f = File()
         f.write(self.test_path, 'Hello World!')
         f.update(self.test_path, '...Yes, Hello World!')
         handler = open(self.test_path, 'r')
@@ -56,9 +56,9 @@ class TestFileActions:
         os.remove(self.test_path)
 
     def test_we_can_delete_a_file(self):
-        f = TaskFile()
+        f = File()
         f.create(self.test_path)
         assert path.isfile(self.test_path) is True, "File was not created"
-        f = TaskFile()
+        f = File()
         f.delete(self.test_path)
         assert path.isfile(self.test_path) is False, "File was not deleted"
