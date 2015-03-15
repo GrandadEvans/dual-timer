@@ -38,16 +38,6 @@ class TestTimer:
         status = timer.status
         assert status.lower() == 'started'
 
-    # def test_the_timer_runs_when_the_status_is_started(self):
-    #     Timer = Timer()
-    #     Timer.start_timer()
-    #     GLib.timeout_add_seconds(1, 3, self.return_false)
-    #     print(Timer.duration)
-    #     assert Timer.duration == 3
-    #
-    # def return_false(self):
-    #     return False
-
     def test_the_duration_updates_when_update_duration_is_called(self):
         timer = Timer()
         assert timer.duration == 0

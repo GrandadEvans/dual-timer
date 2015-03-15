@@ -34,15 +34,15 @@ class TestFileActions:
     def test_we_can_create_a_file(self):
         f = TaskFile()
         f.create(self.test_path)
-        assert(path.isfile(self.test_path) is True, "File does not exist")
+        assert path.isfile(self.test_path) is True, "File does not exist"
         os.remove(self.test_path)
 
     def test_we_can_write_to_a_file(self):
         f = TaskFile()
         f.write(self.test_path, 'Hello World!')
         handler = open(self.test_path, 'r')
-        assert("Hello World!" in handler.read(),
-               "Hello World! was not found in the File contents")
+        assert "Hello World!" in handler.read(), "Hello World! was not " \
+                                                 "found in the File contents"
         os.remove(self.test_path)
 
     def test_we_can_update_a_file(self):
@@ -50,14 +50,15 @@ class TestFileActions:
         f.write(self.test_path, 'Hello World!')
         f.update(self.test_path, '...Yes, Hello World!')
         handler = open(self.test_path, 'r')
-        assert("Hello World!...Yes, Hello World" in handler.read(),
-               "Updated text was not found in the File contents")
+        assert \
+            "Hello World!...Yes, Hello World" in handler.read(), \
+            "Updated text was not found in the File contents"
         os.remove(self.test_path)
 
     def test_we_can_delete_a_file(self):
         f = TaskFile()
         f.create(self.test_path)
-        assert (path.isfile(self.test_path) is True, "File was not created")
+        assert path.isfile(self.test_path) is True, "File was not created"
         f = TaskFile()
         f.delete(self.test_path)
-        assert (path.isfile(self.test_path) is False, "File was not deleted")
+        assert path.isfile(self.test_path) is False, "File was not deleted"

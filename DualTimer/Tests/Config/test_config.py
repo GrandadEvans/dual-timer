@@ -16,9 +16,10 @@ class TestConfig:
 
     def test_we_have_a_blank_oauth_id(self):
         ob = Freeagent().ob()
-        print(ob)
-        assert ob['freeagent_API_auth_ID'] == ""
+        assert ob['freeagent_API_auth_ID'] == "", "freeagent_API_auth_ID " \
+                                                  "URL is not set"
 
     def test_we_have_a_blank_oauth_secret(self):
         ob = Freeagent().ob()
-        assert ob['freeagent_API_auth_secret'] == ""
+        assert ob['freeagent_API_auth_secret'] == "", "freeagent_API_auth_" \
+                                                      "secret URL is not set"

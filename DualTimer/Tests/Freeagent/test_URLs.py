@@ -8,41 +8,45 @@ from DualTimer.Src.Freeagent.URLs import URLs
 
 class TestFreeagentURLs:
 
+    def setup_class(self):
+        self.all = URLs().URL_list()
+
     def test_we_have_non_empty_project_entries(self):
-        ob = URLs().URL_list()
-        assert 'https://api.Freeagent.com' in ob['projects']['all']
-        assert 'https://api.Freeagent.com' in ob['projects']['single']
-        assert 'https://api.Freeagent.com' in ob['projects']['by_contact']
-        assert 'https://api.Freeagent.com' in ob['projects']['create']
-        assert 'https://api.Freeagent.com' in ob['projects']['update']
-        assert 'https://api.Freeagent.com' in ob['projects']['delete']
+        assert 'https://api.Freeagent.com' in self.all['projects']['all']
+        assert 'https://api.Freeagent.com' in self.all['projects']['single']
+        assert 'https://api.Freeagent.com' in \
+               self.all['projects']['by_contact']
+        assert 'https://api.Freeagent.com' in self.all['projects']['create']
+        assert 'https://api.Freeagent.com' in self.all['projects']['update']
+        assert 'https://api.Freeagent.com' in self.all['projects']['delete']
 
     def test_we_have_non_empty_task_entries(self):
-        ob = URLs().URL_list()
-        assert 'https://api.Freeagent.com' in ob['tasks']['all']
-        assert 'https://api.Freeagent.com' in ob['tasks']['single']
-        assert 'https://api.Freeagent.com' in ob['tasks']['create']
-        assert 'https://api.Freeagent.com' in ob['tasks']['update']
-        assert 'https://api.Freeagent.com' in ob['tasks']['delete']
+        assert 'https://api.Freeagent.com' in self.all['tasks']['all']
+        assert 'https://api.Freeagent.com' in self.all['tasks']['single']
+        assert 'https://api.Freeagent.com' in self.all['tasks']['create']
+        assert 'https://api.Freeagent.com' in self.all['tasks']['update']
+        assert 'https://api.Freeagent.com' in self.all['tasks']['delete']
 
     def test_we_have_non_empty_contact_entries(self):
-        ob = URLs().URL_list()
-        assert 'https://api.Freeagent.com' in ob['contacts']['all']
-        assert 'https://api.Freeagent.com' in ob['contacts']['all_with_filter']
-        assert 'https://api.Freeagent.com' in ob['contacts']['single']
-        assert 'https://api.Freeagent.com' in ob['contacts']['create']
-        assert 'https://api.Freeagent.com' in ob['contacts']['update']
-        assert 'https://api.Freeagent.com' in ob['contacts']['delete']
+        assert 'https://api.Freeagent.com' in self.all['contacts']['all']
+        assert 'https://api.Freeagent.com' in \
+               self.all['contacts']['all_with_filter']
+        assert 'https://api.Freeagent.com' in self.all['contacts']['single']
+        assert 'https://api.Freeagent.com' in self.all['contacts']['create']
+        assert 'https://api.Freeagent.com' in self.all['contacts']['update']
+        assert 'https://api.Freeagent.com' in self.all['contacts']['delete']
 
     def test_we_have_none_empty_timeslip_entries(self):
-        ob = URLs().URL_list()
-        assert 'https://api.Freeagent.com' in ob['timeslips']['all']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['all_by_dates']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['all_by_user']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['all_by_task']
-        assert (
-            'https://api.Freeagent.com' in ob['timeslips']['all_by_project'])
-        assert 'https://api.Freeagent.com' in ob['timeslips']['single']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['create']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['update']
-        assert 'https://api.Freeagent.com' in ob['timeslips']['delete']
+        assert 'https://api.Freeagent.com' in self.all['timeslips']['all']
+        assert 'https://api.Freeagent.com' in \
+               self.all['timeslips']['all_by_dates']
+        assert 'https://api.Freeagent.com' in \
+               self.all['timeslips']['all_by_user']
+        assert 'https://api.Freeagent.com' in \
+               self.all['timeslips']['all_by_task']
+        assert 'https://api.Freeagent.com' in \
+               self.all['timeslips']['all_by_project']
+        assert 'https://api.Freeagent.com' in self.all['timeslips']['single']
+        assert 'https://api.Freeagent.com' in self.all['timeslips']['create']
+        assert 'https://api.Freeagent.com' in self.all['timeslips']['update']
+        assert 'https://api.Freeagent.com' in self.all['timeslips']['delete']
