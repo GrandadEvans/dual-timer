@@ -76,14 +76,10 @@ class Project:
             self.change_dot_notation_to_stacked(item, value)
 
     def change_dot_notation_to_stacked(self, item, value):
-        print("item:", item)
-        print("value:", value)
-
         if "." in item:
             bits = item.split(".")
             self.project_details[bits[0]][bits[1]] = value
         else:
-            print("Item:", item, " = ", value)
             self.project_details[item] = value
         self.create_the_project_info()
 
