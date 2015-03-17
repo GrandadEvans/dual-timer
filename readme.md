@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GrandadEvans/dual-timer.svg?branch=master)](https://travis-ci.org/GrandadEvans/dual-timer) [![Coverage Status](https://coveralls.io/repos/GrandadEvans/dual-timer/badge.svg)](https://coveralls.io/r/GrandadEvans/dual-timer)
+[![Build Status](https://travis-ci.org/GrandadEvans/dual-timer.svg?branch=master)](https://travis-ci.org/GrandadEvans/dual-timer)
 # Dual Timer
 This project is here because I couldn't find a solution to what I wanted
 
