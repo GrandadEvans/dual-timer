@@ -28,6 +28,7 @@ class Project:
     def __init__(self, project_name):
         self.project_name = project_name
         self.project_path = Config().paths()["base"] + 'stubs/Project/'
+        self.project_info_file = self.project_path + "project.json"
         print(self.project_path)
 
     def create_project_directory(self):
@@ -58,3 +59,10 @@ class Project:
                 "value": 0
             }
         }))
+
+    def delete_project(self):
+        if os.path.isfile(self.project_info_file) is True:
+            os.remove(self.project_info_file)
+        if os.path.isdir(self.project_path) is True:
+            os.removedirs(self.project_path)
+

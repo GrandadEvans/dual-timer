@@ -88,3 +88,13 @@ class TestProject:
         assert info["billing"]["currency"] == "GBP"
         assert info["budget"]["unit"] == "hours"
         assert info["budget"]["value"] == 0
+
+    def test_we_can_delete_a_project(self, clear_old_files):
+        clear_old_files
+        project = Project("Test Project Name")
+        project.create_project_directory()
+        project.create_project_info_file()
+        project.create_the_project_info()
+
+        project.delete_project()
+        assert os.path.isdir(self.project_path) is False
