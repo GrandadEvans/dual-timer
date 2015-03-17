@@ -2,9 +2,7 @@ from gi.repository import Gtk
 from gi.repository import GLib
 from gi.repository import Wnck
 
-
 class WindowTitle(object):
-
     def __init__(self):
         self.title = None
         GLib.timeout_add(100, self.get_title)
