@@ -98,3 +98,40 @@ class TestProject:
 
         project.delete_project()
         assert os.path.isdir(self.project_path) is False
+
+    def test_we_can_update_the_project_information_correctly(
+            self, clear_old_files):
+
+        clear_old_files
+        project = Project("Test Project Name")
+        project.create_project_directory()
+        project.create_project_info_file()
+        project.create_the_project_info()
+        fp = open(self.project_info_file)
+
+        project.update_project({
+            "name": "A Different Project Name",
+            "start_date": "2015-03-01",
+            "end_date": "2015-12-25",
+            "end_date_type": "estimated",
+            "billing.billable_unit": "price",
+            "billing.billable_rate": 25.00,
+            "billing.currency": "USD",
+            "budget.unit": "USD",
+            "budget.value": 2000
+        })
+        project.add_contact("GrandadEvans")
+        project.set_not_billable()
+        info = json.loads(fp.read())
+
+        assert info["name"] == "A Different Project Name"
+        assert info["start_date"] == "2015-03-01"
+        assert info["end_date"] == "2015-12-25"
+        assert info["end_date_type"] == "estimated"
+        assert info["contacts"] == ['GrandadEvans']
+        assert info["billing"]["billable_unit"] == "price"
+        assert info["billing"]["billable_rate"] == 25.00
+        assert info["billing"]["currency"] == "USD"
+        assert info["budget"]["unit"] == "USD"
+        assert info["budget"]["value"] == 2000
+        assert info["billing"]["billable"] is False

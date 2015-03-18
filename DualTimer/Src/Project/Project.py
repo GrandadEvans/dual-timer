@@ -6,6 +6,7 @@ Class to take care of the projects
 # import built in modules
 import os
 import json
+import pprint
 
 # import Third party
 
@@ -29,20 +30,7 @@ class Project:
         self.project_name = project_name
         self.project_path = Config().paths()["base"] + 'stubs/Project/'
         self.project_info_file = self.project_path + "project.json"
-        print(self.project_path)
-
-    def create_project_directory(self):
-        if os.path.isdir(self.project_path):
-            raise Exception("Project already exists")
-        os.mkdir(self.project_path)
-
-    def create_project_info_file(self):
-        return open(Config().paths()[
-            "base"] + "stubs/Project/project.json", 'w')
-
-    def create_the_project_info(self):
-        fp = self.create_project_info_file()
-        fp.write(json.dumps({
+        self.project_details = {
             "name": self.project_name,
             "start_date": None,
             "end_date": None,
@@ -58,7 +46,22 @@ class Project:
                 "unit": "hours",
                 "value": 0
             }
-        }))
+        }
+        self.pp = pprint.PrettyPrinter(indent=4)
+        self.pp.pprint(self.project_path)
+
+    def create_project_directory(self):
+        if os.path.isdir(self.project_path):
+            raise Exception("Project already exists")
+        os.mkdir(self.project_path)
+
+    def create_project_info_file(self):
+        return open(Config().paths()[
+            "base"] + "stubs/Project/project.json", 'w')
+
+    def create_the_project_info(self):
+        fp = self.create_project_info_file()
+        fp.write(json.dumps(self.project_details))
 
     def delete_project(self):
         if os.path.isfile(self.project_info_file) is True:
@@ -66,3 +69,29 @@ class Project:
         if os.path.isdir(self.project_path) is True:
             os.removedirs(self.project_path)
 
+    def update_project(self, details):
+        # print(details)
+        for item, value in details.items():
+            # print("For loop:", item)
+            self.change_dot_notation_to_stacked(item, value)
+
+    def change_dot_notation_to_stacked(self, item, value):
+        print("item:", item)
+        print("value:", value)
+
+        if "." in item:
+            bits = item.split(".")
+            self.project_details[bits[0]][bits[1]] = value
+        else:
+            print("Item:", item, " = ", value)
+            self.project_details[item] = value
+        self.create_the_project_info()
+
+    def add_contact(self, contact):
+        if str(contact).lower() not in self.project_details["contacts"]:
+            self.project_details["contacts"].append(contact)
+        self.create_the_project_info()
+
+    def set_not_billable(self):
+        self.project_details["billing"]["billable"] = False
+        self.create_the_project_info()
